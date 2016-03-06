@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "NavigationController.h"
+#import "HomeViewController.h"
+#import "LeftMenuViewController.h"
+//#import "KairosSDK.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +21,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+//    [KairosSDK initWithAppId:@"049d0bc4" appKey:@"bb781a4ff207ba8bdf63794f8e2ffc12"];
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"gender" ofType:@"plist"];
+    self.genderArray = [[NSArray alloc] initWithContentsOfFile:path];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"name" ofType:@"plist"];
+    self.nameArray = [[NSArray alloc] initWithContentsOfFile:path];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"celebrity_gender" ofType:@"plist"];
+    self.celebrity_gender = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    self.sideviewController = [[JASidePanelController alloc] init];
+    self.sideviewController.shouldDelegateAutorotateToVisiblePanel = NO;
+    
+    LeftMenuViewController *leftviewcontroller = [storyboard instantiateViewControllerWithIdentifier:@"leftmenu"];
+    self.sideviewController.leftPanel = leftviewcontroller;
+    
+    HomeViewController *homeviewcontroller = [storyboard instantiateViewControllerWithIdentifier:@"home"];
+    self.nav = [[NavigationController alloc] initWithRootViewController:homeviewcontroller];
+    
+    self.sideviewController.centerPanel = self.nav;
+    self.window.rootViewController = self.sideviewController;
+    
+    
     return YES;
 }
 

@@ -1,0 +1,16 @@
+PODS:
+  - GPUImage (0.1.7)
+  - UIActionSheet+Blocks (0.8.1)
+  - ZDStickerView (0.1.18)
+
+DEPENDENCIES:
+  - GPUImage (~> 0.1.7)
+  - UIActionSheet+Blocks (~> 0.8.1)
+  - ZDStickerView (~> 0.1.16)
+
+SPEC CHECKSUMS:
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  UIActionSheet+Blocks: 7fdab45fc8f15ac2dc1cd65af1470746600b5f46
+  ZDStickerView: 6a9dd79e4e0e9f6686b34993a65bd50229c7b061
+
+COCOAPODS: 0.39.0
